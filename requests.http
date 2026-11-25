@@ -1,0 +1,72 @@
+# /health
+GET http://localhost:8080/health
+
+### ping
+GET http://localhost:8080/ping
+
+### /auth register
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "user-student",
+  "email": "student@example.com",
+  "password": "pass@123"
+}
+
+### /login
+# @name login
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "student@example.com",
+  "password": "pass@123"
+}
+
+### /books
+GET http://localhost:8080/api/books
+Authorization: Bearer {{login.response.body.token}}
+
+### prestar libro 1
+# @name prestamoLibro
+POST http://localhost:8080/api/loans
+Authorization: Bearer {{login.response.body.token}}
+Content-Type: application/json
+
+{
+  "book_id": 1
+}
+
+### mis préstamos de libros
+GET http://localhost:8080/api/loans/me
+Authorization: Bearer {{login.response.body.token}}
+
+### devolver libro
+PUT http://localhost:8080/api/loans/{{prestamoLibro.response.body.id}}/return
+Authorization: Bearer {{login.response.body.token}}
+### Laptops: sustituir TOKEN_ADMIN, TOKEN_USER e IDs por valores reales
+POST http://localhost:8080/api/laptops
+Authorization: Bearer TOKEN_ADMIN
+Content-Type: application/json
+
+{"serial":"DELL-001","brand":"Dell","model":"Latitude"}
+
+### Inventario
+GET http://localhost:8080/api/laptops
+Authorization: Bearer TOKEN_USER
+
+### Prestar
+POST http://localhost:8080/api/laptop-loans
+Authorization: Bearer TOKEN_USER
+Content-Type: application/json
+
+{"laptop_id":1}
+
+### Historial
+GET http://localhost:8080/api/laptop-loans/me
+Authorization: Bearer TOKEN_USER
+
+### Devolver (ID del préstamo)
+PUT http://localhost:8080/api/laptop-loans/1/return
+Authorization: Bearer TOKEN_USER
