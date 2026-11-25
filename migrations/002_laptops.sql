@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS laptops (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ serial VARCHAR(100) NOT NULL UNIQUE,
+ brand VARCHAR(100) NOT NULL,
+ model VARCHAR(100) NOT NULL,
+ available BOOLEAN NOT NULL DEFAULT TRUE
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS laptop_loans (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ user_id INT NOT NULL,
+ laptop_id INT NOT NULL,
+ loaned_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ due_at TIMESTAMP NOT NULL,
+ returned_at TIMESTAMP NULL,
+ status ENUM('active','returned') NOT NULL DEFAULT 'active',
+ active_laptop_id INT GENERATED ALWAYS AS (CASE WHEN status='active' THEN laptop_id ELSE NULL END) STORED,
+ UNIQUE KEY uq_active_laptop (active_laptop_id),
+ FOREIGN KEY (user_id) REFERENCES users(id),
+ FOREIGN KEY (laptop_id) REFERENCES laptops(id)
+) ENGINE=InnoDB;
