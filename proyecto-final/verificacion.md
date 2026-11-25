@@ -20,20 +20,20 @@ El script registra usuarios de prueba con correos únicos, promueve uno a admini
 
 | Caso | Resultado esperado | Evidencia real |
 |---|---|---|
-| Docker build / ps | Tres servicios activos, MySQL healthy | Pendiente |
-| health / ping | 200 y JSON esperado | Pendiente |
-| Registro y login | 201 / 200 | Pendiente |
+| Docker build / ps | Tres servicios activos, MySQL healthy | Superado |
+| health / ping | 200 y JSON esperado | Superado |
+| Registro y login | 201 / 200 | Superado |
 | Catálogo libros | 200 | Pendiente |
-| Préstamo, historial y devolución libro | 201 / 200 / 200 | Pendiente |
-| Crear laptop admin / estudiante | 201 / 403 | Pendiente |
-| Catálogo laptop autenticado / sin token | 200 / 401 | Pendiente |
-| Serial duplicado | 409 | Pendiente |
-| Préstamo laptop | 201 | Pendiente |
-| Segundo préstamo del mismo equipo | 409 | Pendiente |
-| Historial propio, aislamiento | 200 | Pendiente |
-| Devolución ajena / propia / repetida | 403 / 200 / 409 | Pendiente |
-| Inventario disponible y nuevo préstamo | 200 / 201 | Pendiente |
-| Devolución administrativa | 200 | Pendiente |
+| Préstamo, historial y devolución libro | 201 / 200 / 200 | Superado |
+| Crear laptop admin / estudiante | 201 / 403 | Superado |
+| Catálogo laptop autenticado / sin token | 200 / 401 | Superado |
+| Serial duplicado | 409 | Superado |
+| Préstamo laptop | 201 | Superado |
+| Segundo préstamo del mismo equipo | 409 | Superado |
+| Historial propio, aislamiento | 200 | Superado |
+| Devolución ajena / propia / repetida | 403 / 200 / 409 | Superado |
+| Inventario disponible y nuevo préstamo | 200 / 201 | Superado |
+| Devolución administrativa | 200 | Superado |
 
 Adjuntar salida real del script y captura de `docker compose ps`; actualizar la tabla únicamente después de revisar los resultados. Si alguna prueba falla, conservar el error y corregirlo antes de entregar.
 
